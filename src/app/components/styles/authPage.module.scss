@@ -18,6 +18,16 @@
   margin-top: 0.25rem;
   text-align: left;
 }
+.form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:  center;
+  gap: 1.5rem;
+}
+
 @media screen and (max-width: 768px) {
   .main {
     padding: 1rem;

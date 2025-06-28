@@ -8,8 +8,8 @@ import { toast } from "react-toastify";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-
-
+import { useRouter } from "next/navigation";
+import { useUser } from "@/context/UserContext";
 type Form = {
   phone: string;
   
@@ -24,7 +24,8 @@ const schema = yup.object({
     .matches(/^09\d{9}$/, "phone number must be start with 09"),
 });
 
-export default function page() {
+export default function Authpage() {
+  const router = useRouter();
     const {
     register,
     handleSubmit,
@@ -32,17 +33,25 @@ export default function page() {
   } = useForm<Form>({
     resolver: yupResolver(schema),
   })
-  const [username, setUsername] = useState();
+  const [username, setUsername] = useState<string | undefined>();
+ const {setUser} = useUser();
   const onSubmit = async () => {
     try {
       const res = await axios.get(
         "https://randomuser.me/api/?results=1&nat=us"
       );
-      const user = res.data.results[0].name.first;
+      const user = res.data.results[0];
+      console.log(user);
       setUsername(user);
       localStorage.setItem("username", user);
+      const userdata = {
+        name: user.name.first,
+        email:user.email,
+        picture: user.picture.large
+      }
+      setUser(userdata);
       toast.success("logged in successfully");
-      window.location.href = "/dashboard";
+     router.push("/dashboard");
     } catch (error) {
       console.error("something went wrong", error);
       toast.error("something went wrong");
@@ -51,10 +60,10 @@ export default function page() {
  
   return (
     <main className={styles.main}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-      <InputNum {...register("phone")} />
-       {errors.phone && <p className={styles.error}>{errors.phone.message}</p>}
-      <Button type="submit">Login </Button>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <InputNum {...register("phone")} />
+        {errors.phone && <p className={styles.error}>{errors.phone.message}</p>}
+        <Button type="submit">Login </Button>
       </form>
     </main>
   );

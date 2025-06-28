@@ -5,9 +5,9 @@ export default function page() {
   return (
     <div>
    <main className={styles.container}> 
-     <h1 className={styles.title}>به سیستم احراز هویت خوش آمدید</h1> 
+     <h1 className={styles.title}> welcome to the validation App</h1> 
       <Link href="/auth">
-        <button className={styles.Button}>برو به صفحه ورود</button>
+        <button className={styles.Button}>Go to the Login Page</button>
       </Link>
    </main> 
     </div>
