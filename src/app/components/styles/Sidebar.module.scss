@@ -1,0 +1,132 @@
+// .sidebar {
+//   width: 220px;
+//   background-color: #1c1c1c;
+//   padding: 2rem 1rem;
+//   display: flex;
+//   flex-direction: column;
+//   gap: 2rem;
+//   border-right: 1px solid #333;
+// }
+
+// .logo {
+//   font-size: 1.5rem;
+//   font-weight: bold;
+//   color: #ff5f57;
+//   text-align: center;
+// }
+
+// .menu {
+//   list-style: none;
+//   padding: 0;
+//   margin: 0;
+
+//   li {
+//     padding: 0.75rem 1rem;
+//     border-radius: 8px;
+//     cursor: pointer;
+//     transition: background 0.3s ease;
+
+//     &:hover {
+//       background: #333;
+//     }
+//   }
+
+//   .active {
+//     background: #ff5f57;
+//     color: white;
+//     font-weight: bold;
+//   }
+// }
+// @media (max-width: 768px) {
+//   .sidebar {
+//     width: 100%;
+//     padding: 1rem;
+//     border-right: none;
+//   }
+// }
+.sidebar {
+  width: 220px;
+  background-color: #1c1c1c;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border-right: 1px solid #333;
+  position: fixed; 
+  height: 100vh;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+
+@media (min-width: 769px) {
+  .hamburger {
+    display: none;
+  }
+  .sidebar {
+    transform: translateX(0);
+    position: relative;
+    height: auto;
+  }
+}
+
+/* موبایل: منو به صورت کشویی از سمت چپ مخفی میشه */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .hamburger {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    z-index: 1100;
+    cursor: pointer;
+  }
+  .backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 900;
+  }
+}
+
+/* بقیه استایل ها رو مثل قبل حفظ کن */
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff5f57;
+  text-align: center;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: #333;
+    }
+  }
+
+  .active {
+    background: #ff5f57;
+    color: white;
+    font-weight: bold;
+  }
+}
