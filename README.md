@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+A robust and scalable authentication and dashboard system built with Next.js, TypeScript, React Context, and SCSS Modules.
 
-## Getting Started
+Overview
+This project demonstrates a clean, maintainable authentication flow where users can log in by submitting their phone number. Upon successful authentication via an external API, the user is redirected to a fully responsive dashboard. The dashboard features a sleek sidebar navigation that adapts gracefully from desktop to mobile with a hamburger menu.
 
-First, run the development server:
+Key Features
+Simple authentication via randomuser API, simulating real-world user data fetching.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Global state management using React Context API for seamless user session handling.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Reusable UI components including buttons, inputs, and sidebar navigation.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+TypeScript-powered for type safety and improved developer experience.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Responsive design crafted with SCSS Modules, optimized for all screen sizes.
 
-## Learn More
+Form validation leveraging yup and react-hook-form for robust input handling.
 
-To learn more about Next.js, take a look at the following resources:
+User feedback through toast notifications using react-toastify.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Next.js Image optimization configured for external images.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Logout functionality integrated within the sidebar for secure session termination.
 
-## Deploy on Vercel
+Mobile-first hamburger menu with smooth animation and accessibility in mind.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Project Structure:
+/src
+ ├── /app
+ │    ├── /auth          # Login and authentication pages
+ │    └── /dashboard     # Dashboard with sidebar and user details
+ ├── /components         # UI components (Button, Input, Sidebar)
+ ├── /context            # React Context for user state management
+ └── /styles             # Modular SCSS stylesheets
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Technical Notes
+API endpoint for user data is easily configurable in /app/auth/page.tsx.
+
+External images are enabled through next.config.js image domains configuration.
+
+Iconography handled with react-icons for consistency and scalability.
+
+Logout clears user context and localStorage, then redirects to login.
+
+Form validation schema built with yup ensures phone number correctness.
+
+Responsive sidebar shifts between fixed and relative positioning with a smooth slide-in animation.
+
+Future Improvements
+Implement JWT-based authentication with backend integration.
+
+Add role-based access control and multi-user support.
+
+Enhance dashboard with dynamic widgets and analytics.
+
+Write comprehensive unit and integration tests.
+
+Improve accessibility and internationalization support.
